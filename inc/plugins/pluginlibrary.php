@@ -136,6 +136,8 @@ class PluginLibrary
                           array("description" => "PLUGINLIBRARYDELETEMARKER"),
                           "gid='$gid'");
 
+        $disporder = 0;
+
         // Create and/or update settings.
         foreach($list as $key => $setting)
         {
@@ -161,7 +163,7 @@ class PluginLibrary
             $setting = array_map(array($db, 'escape_string'), $setting);
 
             // Add missing default values.
-            $disporder += 1;
+            ++$disporder;
 
             $setting = array_merge(
                 array('description' => '',
